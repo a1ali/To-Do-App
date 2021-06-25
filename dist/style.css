@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.grid-container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 306px auto;
+    grid-template-rows: 100px auto;
+    grid-template-areas:
+    "to-do topbtn__container"
+    "project__sidebar task__area";
+}
+
+.task__area, .topbtn__container {
+    background: #292929;
+    
+
+}
+
+
+.to-do {
+    grid-area: to-do;
+    
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.5em;
+    line-height: 56px;
+
+    background: #414141;
+}
+
+.logo {
+    margin-top: 22px;
+    margin-left: 30px;
+    color: white;
+}
+.topbtn__container {
+    grid-area: topbtn__container;
+    
+}
+
+.topbtns {
+    margin: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+}
+
+
+.add__task {
+    width: 200px;
+    height: 54px;
+    background: #5161F0;
+    border-radius: 9px;
+    border: none;
+    margin-right: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(0, 0, 0, 0.25);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 21px;
+    /* identical to box height */
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.add__task:active {
+    transform: translateY(2px);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
+    
+}
+
+.clear__all {
+    width: 200px;
+    height: 54px;
+    background: #F15050;
+    border-radius: 9px;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(0, 0, 0, 0.25);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 21px;
+    /* identical to box height */
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.clear__all:active {
+    transform: translateY(2px);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
+    
+}
+
+.date__time {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 2em;
+    line-height: 47px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+    }
+
+.project__sidebar {
+    grid-area: project__sidebar;
+    background: #5A5A5A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add__project__btn {
+    background: #0094FF;
+    border-radius: 9px;
+    width: 200px;
+    height: 54px;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(0, 0, 0, 0.25);
+    margin-top: 20px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 21px;
+    color: #FFFFFF;
+    margin-bottom: 25px;
+    cursor: pointer;
+
+}
+
+.add__project__btn:active {
+    transform: translateY(2px);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
+    
+    
+}
+
+.task__area {
+    grid-area: task__area;
+}
+
+
+.project__box {
+    width: 279px;
+    height: 91px;
+    background: #B9B9B9;
+    border-radius: 5px;
+    display: grid;
+    grid-template-areas: 
+    "project__title .  . trashicon"
+    "list__icon list__num checkmark__icon completed__tasks";
+}
+
+.project__title {
+    grid-area: project__title;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17.8183px;
+    line-height: 21px;
+    color: #000000;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.trash__icon {
+    position: relative;
+    grid-area: trashicon;
+    top: 7px;
+    left: 10px;
+    cursor: pointer;
+    
+}
+
+.list__icon{
+    grid-area: list__icon;
+    height: 35px;
+    width: 35px;
+    position: relative;
+    left: 93px;
+}
+
+.list__num {
+    grid-area: list__num;
+    background: #E04F5F;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 21px;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color:white;
+}
+
+.checkmark__icon{
+    grid-area: checkmark__icon;
+    height: 35px;
+    width: 35px;
+    position: relative;
+    left: 5px;
+}
+
+.completed__tasks{
+    grid-area: completed__tasks;
+    background: #32BEA6;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 21px;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color:white;
+}
