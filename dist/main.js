@@ -1,1 +1,1 @@
-console.log("hello");
+document.querySelector(".add__task").addEventListener("click",(function(){console.log("add task button function")})),document.querySelector(".clear__all").addEventListener("click",(function(){console.log("add clear all button function")})),document.querySelector(".add__project__btn").addEventListener("click",(function(){console.log("add project button function")}));
