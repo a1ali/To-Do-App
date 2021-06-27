@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 * {
     box-sizing: border-box;
@@ -44,6 +45,7 @@
 }
 .topbtn__container {
     grid-area: topbtn__container;
+    border-bottom: 1px solid rgba(104, 103, 103, 0.76);
     
 }
 
@@ -78,6 +80,10 @@
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
     
 }
+.add__task:hover {
+    background: #3e4ab6;
+}
+
 
 .clear__all {
     width: 200px;
@@ -101,6 +107,9 @@
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
     
 }
+.clear__all:hover {
+    background: #c94343;
+}
 
 .date__time {
     font-family: Roboto;
@@ -109,8 +118,6 @@
     font-size: 2em;
     line-height: 47px;
     /* identical to box height */
-
-
     color: #FFFFFF;
     }
 
@@ -144,12 +151,17 @@
 .add__project__btn:active {
     transform: translateY(2px);
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
-    
-    
+}
+.add__project__btn:hover {
+    background: #017cd4;
 }
 
 .task__area {
     grid-area: task__area;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
 }
 
 
@@ -234,3 +246,59 @@
     border-radius: 50%;
     color:white;
 }
+
+.task {
+    width: 95%;
+    height: 65px;
+    background-color: #626262;
+    display: flex;
+    margin-bottom: 15px;
+    padding: 10px;
+    justify-content:space-between;
+    align-items: center;
+    border-radius: 5px;
+    transition: all 200ms ease;
+    /* border: 3px rgb(201, 201, 201) solid; */
+
+}
+
+.task:hover {
+    border: 1px rgb(201, 201, 201) solid;
+    transform: scale(1.005)
+
+}
+
+.task__description {
+    padding-left: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.5em;
+    color: white;
+}
+
+.right__side {
+    display: flex;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.5em;
+    line-height: 21px;
+    color: white;
+    
+}
+.task__date{
+    margin-right: 40px;
+    
+}
+.checkmark__icon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.delete__icon{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
