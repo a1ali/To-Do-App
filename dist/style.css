@@ -168,16 +168,36 @@
 .project__box {
     width: 279px;
     height: 91px;
+    margin-bottom: 20px;
     background: #B9B9B9;
     border-radius: 5px;
     display: grid;
+    grid-template-columns: 139px auto;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: 
-    "project__title .  . trashicon"
-    "list__icon list__num checkmark__icon completed__tasks";
+    "project__title trashicon"
+    "list complete";
+}
+
+.list {
+    grid-area: list;
+    display: flex;
+    
+    padding-left: 52px;
+    height: 40px;
+    width: 205px;
+    
+}
+
+.complete {
+    grid-area: complete;
+    display: flex;
+    
+    margin-left: 10px;
+    
 }
 
 .project__title {
-    grid-area: project__title;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
@@ -189,10 +209,10 @@
 }
 
 .trash__icon {
-    position: relative;
+    position: absolute;
     grid-area: trashicon;
-    top: 7px;
-    left: 10px;
+    left: 260px;
+    padding-top: 5px;
     cursor: pointer;
     
 }
@@ -201,12 +221,10 @@
     grid-area: list__icon;
     height: 35px;
     width: 35px;
-    position: relative;
-    left: 93px;
+
 }
 
 .list__num {
-    grid-area: list__num;
     background: #E04F5F;
     font-family: Roboto;
     font-style: normal;
@@ -220,14 +238,14 @@
     justify-content: center;
     border-radius: 50%;
     color:white;
+    margin-left: 5px;
 }
 
 .checkmark__icon{
     grid-area: checkmark__icon;
     height: 35px;
     width: 35px;
-    position: relative;
-    left: 5px;
+
 }
 
 .completed__tasks{
@@ -244,6 +262,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    margin-left: 5px;
     color:white;
 }
 
@@ -293,7 +312,6 @@
     
 }
 .checkmark__icon {
-    margin-right: 10px;
     cursor: pointer;
 }
 
