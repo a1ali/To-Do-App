@@ -206,4 +206,4 @@ function clearAllTasks() {
     updateProjectList();
 }
 
-export {project, createProject, addProject, projectsArr, createTask, clearAllTasks};
+export {project, createProject, addProject, projectsArr, createTask, clearAllTasks, updateProjectList};

@@ -1,6 +1,6 @@
 import checkMark from '/images/icons8-checkmark-64.png';
 import deleteIcon from '/images/icons8-delete-bin-48.png'
-
+import {updateProjectList} from './project.js'
 
 let taskArea = document.querySelector('.task__area');
 
@@ -81,6 +81,8 @@ function addDeleteEvent(project, index) {
             nextTaskElement.id = `${activeIndex}-task`
             activeIndex++;
         } 
+
+        updateProjectList();
 
     })    
 }
