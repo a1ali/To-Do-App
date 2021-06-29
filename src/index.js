@@ -1,4 +1,4 @@
-import {project, createProject, projectsArr, createTask} from './project.js';
+import {project, createProject, projectsArr, createTask, clearAllTasks} from './project.js';
 import {getTime} from './date.js';
 
 setInterval(getTime, 1000);
@@ -38,6 +38,7 @@ add_task_btn.addEventListener('click', () => {
 
 let clear_all_btn = document.querySelector('.clear__all');
 clear_all_btn.addEventListener('click', () => {
+    clearAllTasks();
 
 })
 

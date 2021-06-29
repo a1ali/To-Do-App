@@ -51,28 +51,7 @@ function addDeleteEvent() {
         //remvoe project from main projects array
         deleteProject(cardIndex);
 
-
-
-        //change to the card to before it if no following card and it is not the last project
-        if (cardIndex === projectsArr.length - 1 && projectsArr.length > 0){
-            activeProjectIndex = cardIndex - 1;
-            removeBorderStyling();
-            document.getElementById(`${activeProjectIndex}-project`).style.border = "1px solid white";
-            displayProjectTasks(projectsArr[activeProjectIndex])
-
-        }
-        //if no projects left
-        else if (projectsArr.length === 0) {
-            activeProjectIndex = 0;
-            removeTasks()
-        }
-        //go to next project
-        else {
-            activeProjectIndex = cardIndex + 1;
-            removeBorderStyling();
-            document.getElementById(`${activeProjectIndex}-project`).style.border = "1px solid white";
-            displayProjectTasks(projectsArr[activeProjectIndex])
-        }
+        removeTasks()
 
         //correct the index of the following project cards trash icon
         while(document.getElementById(`${cardIndex + 1}`) !== null) {
@@ -207,8 +186,8 @@ function displayProjectTasks(pro) {
 }
 function updateProjectList(){
     let listamount = document.getElementById(`${activeProjectIndex}-numList`)
-    projectsArr[activeProjectIndex].completed += 1;
-    listamount.innerText = projectsArr[activeProjectIndex].completed;
+    //projectsArr[activeProjectIndex].completed += 1;
+    listamount.innerText = projectsArr[activeProjectIndex].tasks.length;
 
 }
 
@@ -221,4 +200,10 @@ function createTask(title, description, dueDate) {
     updateProjectList()
 }
 
-export {project, createProject, addProject, projectsArr, createTask};
+function clearAllTasks() {
+    projectsArr[activeProjectIndex].tasks = [];
+    removeTasks();
+    updateProjectList();
+}
+
+export {project, createProject, addProject, projectsArr, createTask, clearAllTasks};
