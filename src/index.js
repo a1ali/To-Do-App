@@ -1,4 +1,7 @@
-import {project, createProject, projectsArr} from './project.js';
+import {project, createProject, projectsArr, createTask} from './project.js';
+import {getTime} from './date.js';
+
+setInterval(getTime, 1000);
 
 let add_project_modal = document.getElementById('modal-bg');
 let add_project_modal_close = document.getElementById('closeBtn');
@@ -10,8 +13,12 @@ add_project_modal_close.addEventListener('click', () => {
 })
 
 projectSubmit.addEventListener('click', () => {
-    createProject(new project(projectName.value));
-    add_project_modal.style.display = 'none';
+
+    if (projectName.value !== '') {
+        createProject(new project(projectName.value));
+        add_project_modal.style.display = 'none';
+    }
+
 })
 
 
@@ -20,12 +27,12 @@ projectSubmit.addEventListener('click', () => {
 
 
 
-// console.log(projectsArr);
+// console.log(projectsArr);0
 
 
 let add_task_btn = document.querySelector('.add__task');
 add_task_btn.addEventListener('click', () => {
-
+    createTask('test', 'testing', 'now');
 })
 
 
@@ -41,6 +48,9 @@ add__project__btn.addEventListener('click', () => {
 });
 
 
-createProject(new project('get a job'));
+createProject(new project('Complete TOP'));
+createTask('Javascript Section', 'complete all Javascript tasks and projects', 'N/A');
+createTask('HTML and CSS', 'complete all HTML and CSS tasks and projects', 'N/A');
+createTask('Node JS', 'complete all Node JS tasks and projects', 'N/A');
 
 
