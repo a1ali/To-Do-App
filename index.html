@@ -21,7 +21,7 @@
                     <button class="add__task">Add Task</button>
                     <button class="clear__all">Clear All</button>
                 </div>
-                <div class="date__time">mm/dd/yyyy 11:59:48 AM</div>
+                <div class="date__time"></div>
             </div>
         </div>
   
@@ -52,7 +52,7 @@
         </div>
 
         <div class="task__area">
-             <div class="task">
+             <!-- <div class="task">
                 
                  <div class="task__description">Add Hello World</div>
 
@@ -62,7 +62,7 @@
                     <img src="/images/icons8-delete-bin-48.png" alt="delete" class="delete__icon"> 
                  </div>
 
-            </div> 
+            </div>  -->
 
         </div>
     </div>
@@ -74,7 +74,7 @@
             </div>
             <div id='form'>  
                 <form onsubmit="return false">
-                    <label for="name">Project Name:</label><br>
+                    <label for="name" id="project_name">Project Name:</label><br>
                     <input type="text" id="name" name="name" required><br>
                     <input type="submit" id="submitButton" value="Submit">
                 </form>
