@@ -283,6 +283,9 @@
     align-items: center;
     border-radius: 5px;
     transition: all 200ms ease;
+    cursor: pointer;
+    /* transform: none;
+    opacity: 1; */
     /* border: 3px rgb(201, 201, 201) solid; */
 
 }
@@ -414,4 +417,173 @@ input {
     font-size: 1.2em;
     line-height: 21px;
     color: black;
+}
+
+
+/* Task modal */
+#modal-bg-task {
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(0, 0 , 0, 0.7);
+    top : 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    animation-name: modalAnimation-task;
+    animation-duration: 1s;
+    
+    
+}
+
+@keyframes modalAnimation-task {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+.modal-task {
+    width: 500px;
+    height: 450px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.7);
+    text-align: center;
+    background: #5161F0;
+}
+
+
+.close-task{
+    position: relative;
+    right: -220px;
+    font-size: 50px;
+    transform: rotate(45deg);
+    font-weight: bold;
+    color: azure;
+}
+
+
+
+input {
+    width: 333px;
+    padding: 5px;
+    margin: 3px;
+    border-color: lightgrey;
+    border-radius: 5px;
+    border-width: 1px;
+     
+} 
+
+#submitButton-task {
+    padding: 5px;
+    width: 100px;
+    border-radius: 10px;
+    border-width: 0;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.7);
+    font-size: larger;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+#submitButton-task:active {
+    transform: translateY(3px);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+#closeBtn-task {
+    cursor: pointer;
+}
+
+#task-style {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 21px;
+    color: white;
+    
+}
+
+#title-task{
+    margin: 10px;
+    outline-width: 0;
+    
+}
+
+#description-task{
+    margin: 10px;
+    padding: 5px;
+    outline-width: 0;
+}
+
+#date-task{
+    margin: 10px;
+    outline-width: 0;
+}
+
+
+#modal-display-task {
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(0, 0 , 0, 0.7);
+    top : 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    animation-name: modalAnimation-task;
+    animation-duration: 1s;
+     
+}
+
+.active_task_title{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2em;
+    line-height: 21px;
+    color: white;
+}
+.active-modal-task {
+    width: 500px;
+    height: 450px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background: #5161F0;
+}
+
+
+.active_task_description {
+    overflow-wrap: break-word;
+    max-width: 450px;
+    height: 200px;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 1.3em;
+    line-height: 21px;
+    color: white;
+    margin-top: 30px;
+
+}
+
+.active_task_date{
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 1.5em;
+    line-height: 21px;
+    color: white;
+}
+
+.active_task_due_date{
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 1.5em;
+    line-height: 21px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#closeActive-task {
+    cursor:pointer;
 }

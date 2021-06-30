@@ -18,6 +18,7 @@ function project(name) {
     this.name = name;
     this.tasks = [];
     this.completed = 0;
+    this.completedTasksIndex = [];
 }
 
 project.prototype.deleteTask = function(taskIndex) {
@@ -26,6 +27,18 @@ project.prototype.deleteTask = function(taskIndex) {
 
 project.prototype.pushTask = function(task) {
     this.tasks.push(task);
+}
+
+project.prototype.pushCompletedTask = function(taskIndex){
+    this.completedTasksIndex.push(taskIndex);
+    this.completed += 1;
+    updateProjectCompletedAmount();
+}
+
+project.prototype.removeCompletedTask = function(taskIndex){
+    this.completedTasksIndex.splice(taskIndex,1);
+    this.completed -= 1;
+    updateProjectCompletedAmount();
 }
 
 function deleteProject(index) {
@@ -158,6 +171,7 @@ function renderProject(project) {
 
     let numCompleted = document.createElement('div');
     numCompleted.className = "completed__tasks";
+    numCompleted.id = `${projectsArr.length - 1}-complete`
     numCompleted.innerText = project.completed;
     completeContainer.appendChild(numCompleted);
 
@@ -178,17 +192,35 @@ function createProject(pro) {
     //console.log(projectsArr)
 }
 
+function changeCompletedTaskStyle(index) {
+    let parentElement = document.getElementById(`${index}-task`);
+    parentElement.style.transform = 'scale(0.97)';
+    parentElement.style.opacity = '0.4';
+}
+
 function displayProjectTasks(pro) {
+    //first remove all previous project tasks
     removeTasks()
+    //interate through tasks list and display each one
     for (let i = 0; i < pro.tasks.length; i++){
         renderTask(pro.tasks[i], i, pro);
     }
+    //fix styling of completed tasks
+    for (let i = 0; i < pro.completedTasksIndex.length; i++){
+        changeCompletedTaskStyle(pro.completedTasksIndex[i]);
+    }
+
 }
 function updateProjectList(){
     let listamount = document.getElementById(`${activeProjectIndex}-numList`)
     //projectsArr[activeProjectIndex].completed += 1;
     listamount.innerText = projectsArr[activeProjectIndex].tasks.length;
 
+}
+
+function updateProjectCompletedAmount() {
+    let completedAmount = document.getElementById(`${activeProjectIndex}-complete`);
+    completedAmount.innerText = projectsArr[activeProjectIndex].completed;
 }
 
 function createTask(title, description, dueDate) {

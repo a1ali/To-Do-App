@@ -83,7 +83,43 @@
     </div>
 
 
+    <div id="modal-bg-task">
+        <div class="modal-task">
+            <div class="close-task"> 
+               <a id='closeBtn-task'>+</a>
+            </div>
+            <div id='form-task'>  
+                <form onsubmit="return false">
+                    <label for="title-text" id="task-style">Task Title:</label><br>
+                    <input type="text" id="title-task" name="title" required><br>
+                    <label for="description-task" id="task-style">Task Description:</label>
+                    <textarea rows = "5" cols = "60" name = "description" id="description-task"></textarea><br>
+                    <label for="date" id="task-style">Due Date:</label><br>
+                    <input type="date" id="date-task" name="date" required><br>
+                    <input type="submit" id="submitButton-task" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-display-task">
+        <div class="active-modal-task">
+            <div class="close-task"> 
+               <a id='closeActive-task'>+</a>
+            </div>
+
+            <div class="active_task_title">
+                Task Title
+            </div>
+
+            <div class="active_task_description">
+                
+            </div>
+            <div class="active_task_due_date">Due:</div>
+            <div class="active_task_date"></div>
     
+        </div>
+    </div>
 
     <script src="main.js"></script>
 </body>
