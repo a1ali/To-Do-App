@@ -38,10 +38,15 @@ project.prototype.pushCompletedTask = function(taskIndex){
 }
 
 project.prototype.removeCompletedTask = function(taskIndex){
-    this.completedTasksIndex.splice(taskIndex,1);
+    let index = this.completedTasksIndex.indexOf(taskIndex);
+    this.completedTasksIndex.splice(index,1);
     this.completed -= 1;
+    if(this.completed < 0){
+        this.completed = 0;
+        this.completedTasksIndex = [];
+    }
     updateProjectCompletedAmount();
-    updateMyStorage();
+    //updateMyStorage();
 }
 
 
@@ -232,7 +237,7 @@ function updateProjectList(){
 function updateProjectCompletedAmount() {
     //update the projects completed task amount
     let completedAmount = document.getElementById(`${activeProjectIndex}-complete`);
-    completedAmount.innerText = projectsArr[activeProjectIndex].completedTasksIndex.length;
+    completedAmount.innerText = projectsArr[activeProjectIndex].completed;
 }
 
 function createTask(title, description, dueDate) {

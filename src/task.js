@@ -150,7 +150,7 @@ function addCheckEvent(project, index) {
             project.pushCompletedTask(activeIndex);
         }
         //if clicked againg undo completion
-        else if(parentElement.style.transform === 'scale(0.97)') {
+        else {
             parentElement.style.transform = 'none';
             parentElement.style.opacity = '1';
             project.removeCompletedTask(activeIndex);
