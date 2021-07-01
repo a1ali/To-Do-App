@@ -4,6 +4,8 @@ import trashIcon from '/images/icons8-trash-can-24.png';
 
 import {task, renderTask, removeTasks} from './task.js';
 
+let myStorage = window.localStorage;
+
 
 let project_sidebar = document.querySelector('.project__sidebar');
 
@@ -39,7 +41,11 @@ project.prototype.removeCompletedTask = function(taskIndex){
     this.completedTasksIndex.splice(taskIndex,1);
     this.completed -= 1;
     updateProjectCompletedAmount();
+    updateMyStorage();
 }
+
+
+
 
 function deleteProject(index) {
     projectsArr.splice(index, 1);
@@ -63,6 +69,8 @@ function addDeleteEvent() {
 
         //remvoe project from main projects array
         deleteProject(cardIndex);
+        //update localstorge
+        updateMyStorage();
 
         removeTasks()
 
@@ -109,11 +117,11 @@ function addActiveProjectEvent() {
         
         if (e.target.className !== "trash__icon") {
         //remove all other border decoration
-        removeBorderStyling();
-        //set the current active project to have border style
-        document.getElementById(projectId).style.border = "1px solid white";
-        //console.log(activeProjectIndex);
-        displayProjectTasks(projectsArr[activeProjectIndex]);
+            removeBorderStyling();
+            //set the current active project to have border style
+            document.getElementById(projectId).style.border = "1px solid white";
+            //render all that projects tasks to display
+            displayProjectTasks(projectsArr[activeProjectIndex]);
         }
 
     })
@@ -122,6 +130,7 @@ function addActiveProjectEvent() {
 
 function removeBorderStyling() {
     for(let i = 0; i < projectsArr.length; i++){
+        //console.log(i);
         document.getElementById(`${i}-project`).style.border = ''
     }
 }
@@ -189,6 +198,8 @@ function renderProject(project) {
 function createProject(pro) {
     addProject(pro);
     renderProject(pro);
+    //update localstorge
+    updateMyStorage();
     //console.log(projectsArr)
 }
 
@@ -219,23 +230,66 @@ function updateProjectList(){
 }
 
 function updateProjectCompletedAmount() {
+    //update the projects completed task amount
     let completedAmount = document.getElementById(`${activeProjectIndex}-complete`);
-    completedAmount.innerText = projectsArr[activeProjectIndex].completed;
+    completedAmount.innerText = projectsArr[activeProjectIndex].completedTasksIndex.length;
 }
 
 function createTask(title, description, dueDate) {
+    //create task object push it into active project object and render 
     let newTask = new task(title, description, dueDate);
     projectsArr[activeProjectIndex].pushTask(newTask);
     let taskIndex = projectsArr[activeProjectIndex].tasks.length - 1;
     let workingProject =  projectsArr[activeProjectIndex];
     renderTask(newTask,  taskIndex, workingProject);
     updateProjectList()
+    //update localstorge
+    updateMyStorage();
 }
 
 function clearAllTasks() {
-    projectsArr[activeProjectIndex].tasks = [];
-    removeTasks();
-    updateProjectList();
+    //remove all tasks from project object and clear task window
+    if (projectsArr.length !== 0){
+        projectsArr[activeProjectIndex].tasks = [];
+        removeTasks();
+        updateProjectList();
+        //update localstorge
+        updateMyStorage(); 
+    }
 }
 
-export {project, createProject, addProject, projectsArr, createTask, clearAllTasks, updateProjectList};
+function updateMyStorage() {
+    myStorage.setItem('projectsArr', JSON.stringify(projectsArr));
+    //console.log('set local storage')
+}
+
+function getLocalStorage() {
+    let getStorage = myStorage.getItem('projectsArr');
+    return JSON.parse(getStorage);
+}
+
+function setProjectsArrAsLocal() {
+    //if local storage is not null set projects array as local storge;
+    // projectsArr = getLocalStorage();
+    let restoredprojectArr = getLocalStorage();
+    projectsArr = [];
+    //local storage only stores string and not the member functions
+    //create new project objects with the values in local storage and append to projects array
+    for (let i = 0; i < restoredprojectArr.length; i++){
+        let currProject = new project(restoredprojectArr[i].name);
+        currProject.tasks = restoredprojectArr[i].tasks;
+        currProject.completed = restoredprojectArr[i].completed;
+        currProject.completedTasksIndex = restoredprojectArr[i].completedTasksIndex;
+        //add the project to projects array
+        addProject(currProject);
+        //render the project card in the project sidebar
+        renderProject(projectsArr[i]);
+        
+    }
+    //display active project tasks
+    displayProjectTasks(projectsArr[activeProjectIndex]);
+}
+
+
+export {project, createProject, addProject, setProjectsArrAsLocal, createTask, 
+        clearAllTasks, updateProjectList, updateMyStorage,getLocalStorage};

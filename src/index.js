@@ -1,4 +1,4 @@
-import {project, createProject, createTask, clearAllTasks} from './project.js';
+import {project, createProject, createTask, clearAllTasks, updateMyStorage, getLocalStorage, setProjectsArrAsLocal} from './project.js';
 import {getTime} from './date.js';
 
 //update time every 1000ms
@@ -74,10 +74,22 @@ add__project__btn.addEventListener('click', () => {
     projectName.value = '';
 });
 
-//Example project and tasks
-createProject(new project('Complete TOP'));
-createTask('Javascript Section', 'complete all Javascript tasks and projects', 'N/A');
-createTask('HTML and CSS', 'complete all HTML and CSS tasks and projects', 'N/A');
-createTask('Node JS', 'complete all Node JS tasks and projects', 'N/A');
+
+
+if (getLocalStorage() === null) {
+    //Example project and tasks
+    createProject(new project('Complete TOP'));
+    createTask('Javascript Section', 'complete all Javascript tasks and projects', 'N/A');
+    createTask('HTML and CSS', 'complete all HTML and CSS tasks and projects', 'N/A');
+    createTask('Node JS', 'complete all Node JS tasks and projects', 'N/A');
+    updateMyStorage();
+}
+else {
+    setProjectsArrAsLocal();
+    //displayAllProjects();
+}
+
+
+
 
 

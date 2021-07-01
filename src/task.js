@@ -1,6 +1,6 @@
 import checkMark from '/images/icons8-checkmark-64.png';
 import deleteIcon from '/images/icons8-delete-bin-48.png'
-import {updateProjectList} from './project.js'
+import {updateProjectList, updateMyStorage} from './project.js'
 
 
 //modal to display task information
@@ -98,6 +98,13 @@ function addDeleteEvent(project, index) {
             project.removeCompletedTask(activeIndex);
         }
 
+        //correct the index of the completed tasks that are after the deleted task
+        for(let i = 0; i < project.completedTasksIndex.length; i++) {
+            if (project.completedTasksIndex[i] > activeIndex){
+                project.completedTasksIndex[i] -= 1;
+            }
+        }
+
         //correct the index of the following task cards trash icon and check icons
         while(document.getElementById(`${activeIndex + 1}-del`) !== null) {
             //trash icon index
@@ -113,6 +120,8 @@ function addDeleteEvent(project, index) {
         } 
         //fix the project sidebar list amount
         updateProjectList();
+        //update localstorge
+        updateMyStorage();
         
     })    
 }
@@ -141,11 +150,13 @@ function addCheckEvent(project, index) {
             project.pushCompletedTask(activeIndex);
         }
         //if clicked againg undo completion
-        else {
+        else if(parentElement.style.transform === 'scale(0.97)') {
             parentElement.style.transform = 'none';
             parentElement.style.opacity = '1';
             project.removeCompletedTask(activeIndex);
         }
+        //update localstorge
+        updateMyStorage();
     })
 }
 
