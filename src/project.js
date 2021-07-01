@@ -38,6 +38,7 @@ project.prototype.pushCompletedTask = function(taskIndex){
 }
 
 project.prototype.removeCompletedTask = function(taskIndex){
+    //find where in array is the index located then remove
     let index = this.completedTasksIndex.indexOf(taskIndex);
     this.completedTasksIndex.splice(index,1);
     this.completed -= 1;
@@ -90,6 +91,9 @@ function addDeleteEvent() {
             //fix number of lists index
             let nextNumList = document.getElementById(`${cardIndex + 1}-numList`);
             nextNumList.id = `${cardIndex}-numList`
+            //fix num completed index
+            let nextNumCompleted = document.getElementById(`${cardIndex + 1}-complete`);
+            nextNumCompleted.id = `${cardIndex}-complete`
             cardIndex++;
     }
 
