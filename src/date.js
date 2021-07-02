@@ -1,4 +1,4 @@
-const date__time = document.querySelector('.date__time');
+const date__time = document.querySelector(".date__time");
 
 export function getTime() {
   const time = new Date().toLocaleString();
