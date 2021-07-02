@@ -1,6 +1,6 @@
-let date__time = document.querySelector('.date__time');
+const date__time = document.querySelector('.date__time');
 
 export function getTime() {
-    let time = new Date().toLocaleString();
-    date__time.innerText = time;
+  const time = new Date().toLocaleString();
+  date__time.innerText = time;
 }
